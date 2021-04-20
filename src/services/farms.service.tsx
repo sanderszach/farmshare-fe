@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-import { useEffect } from "react";
 import { Farm } from "../types";
 import API from './api';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { farmsService } from '../../services'
 import { Farm } from '../../types'
-import { Card, CardHeader, CardTitle, CardImage, CardSubtitle } from '@progress/kendo-react-layout';
+import { Card, CardLayout } from '../../components'
 import styled from 'styled-components'
 
 const API_URL = process.env.REACT_APP_API_URL
@@ -18,33 +18,15 @@ export const Farms:React.FC = () => {
     return(
         <CardLayout>
             {farms && farms.map(farm => 
-                <CardWrapper key={farm.id} onClick={(e) => handleClick(e,farm.id)}>
-                    <StyledCard>
-                        <CardHeader>
-                            <CardTitle>
-                                {farm.name}
-                            </CardTitle>
-                            <CardSubtitle>
-                                {farm.city}, {farm.state}
-                            </CardSubtitle>
-                        </CardHeader>
-                        {farm.image && <CardImage src={`${API_URL}/assets/${farm.image}`} />}
-                    </StyledCard>
-                </CardWrapper>
+                <Card 
+                    key={farm.id} 
+                    handleClick={(e) => handleClick(e,farm.id)}
+                    title={farm.name}
+                    subtitle={farm.city && farm.state ? `${farm.city}, ${farm.state}` : ' '}
+                    imageSrc={farm.image && `${API_URL}/assets/${farm.image}`}
+                />
             )}
         </CardLayout>
     )
 }
 
-const CardLayout = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-`
-const StyledCard = styled(Card)`
-    height: 250px;
-    width: 250px;
-`
-const CardWrapper = styled.div<{onClick?}>`
-    ${(props) => props.onClick && `cursor: pointer;`}
-    margin: 20px;
-`
