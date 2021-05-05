@@ -7,6 +7,7 @@ import useToken from './useToken';
 import { Farms } from './pages/farms/farms';
 import { Farm } from './pages/farms/farm/farm';
 import { DrawerRouterContainer } from './components/drawer-router-container/drawer-router-container';
+import { UserContextProvider } from './contexts'
 
 function App() {
   const { token, setToken } = useToken();
@@ -16,25 +17,26 @@ function App() {
   }
 
   return (
-    <DrawerRouterContainer>
-      <PageWrapper>
-        <Router>
-          <Switch>
-            <Route path="/farms/:farmId" component={Farm} />
-          </Switch>
-          <Switch>
-            <Route exact path="/test" component={Farm} />
-          </Switch>
-          <Switch>
-            <Route exact path="/farms" component={Farms} />
-          </Switch>
-          <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />        
-          </Switch>
-        </Router>
-      </PageWrapper>
-    </DrawerRouterContainer>
-
+    <UserContextProvider>
+      <DrawerRouterContainer>
+        <PageWrapper>
+          <Router>
+            <Switch>
+              <Route path="/farms/:farmId" component={Farm} />
+            </Switch>
+            <Switch>
+              <Route exact path="/test" component={Farm} />
+            </Switch>
+            <Switch>
+              <Route exact path="/farms" component={Farms} />
+            </Switch>
+            <Switch>
+              <Route exact path="/dashboard" component={Dashboard} />        
+            </Switch>
+          </Router>
+        </PageWrapper>
+      </DrawerRouterContainer>
+    </UserContextProvider>
   );
 
 

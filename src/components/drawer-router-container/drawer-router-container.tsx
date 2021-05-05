@@ -10,9 +10,10 @@ export const DrawerRouterContainer:React.FC<OwnProps> = (props) => {
     const [expanded, setExpanded] = useState(true)
 
     const items = [
-        { text: 'Farms', icon: 'k-i-inbox', route: '/farms' },
-        { separator: true },
         { text: 'Dashboard', icon: 'k-i-bell', route: '/dashboard' },
+        { separator: true },
+        { text: 'Farms', icon: 'k-i-inbox', route: '/farms' },
+
     ];
 
     const onSelect = (e) => {
