@@ -3,6 +3,7 @@ import { Drawer, DrawerContent } from '@progress/kendo-react-layout';
 import { Button } from '@progress/kendo-react-buttons'
 import styled from 'styled-components';
 import { theme } from '../../theme';
+import { Logout } from '..';
 
 interface OwnProps {}
 
@@ -13,7 +14,8 @@ export const DrawerRouterContainer:React.FC<OwnProps> = (props) => {
         { text: 'Dashboard', icon: 'k-i-bell', route: '/dashboard' },
         { separator: true },
         { text: 'Farms', icon: 'k-i-inbox', route: '/farms' },
-
+        { text: 'Crop Groups', icon: 'k-i-inbox', route: '/eatergroups' },
+        { text: 'Account', icon: 'k-i-inbox', route: '/account' },
     ];
 
     const onSelect = (e) => {
@@ -26,6 +28,7 @@ export const DrawerRouterContainer:React.FC<OwnProps> = (props) => {
         <div>
             <Toolbar>
                 <Button icon="menu" look="flat" onClick={handleClick} />
+                <Logout/>
             </Toolbar>
             <StyledDrawer
                 expanded={expanded}

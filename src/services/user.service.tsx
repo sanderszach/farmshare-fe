@@ -5,4 +5,9 @@ async function getCurrentUser(setState) {
     .then(res => setState(res.data.data))
 }
 
-export const userService = {getCurrentUser}
+async function getUserEaterGroups(userId:string,setState) {
+    return API.get(`/items/eater_groups?fields=*,eaters.*&deep[eaters][_filter][directus_users_id]=$CURRENT_USER&filter[eaters][_has]=1`)
+    .then(res => setState(res.data.data.filter(x => x.eaters.length > 0))) // TODO: This filter is a temporary workaround. Need to apply filters to the API call to only return eater_groups with valid user
+}
+
+export const userService = {getCurrentUser,getUserEaterGroups}

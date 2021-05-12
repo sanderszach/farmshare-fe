@@ -1,7 +1,7 @@
 import React, { Children, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { Card, CardLayout, PageWrapper, SectionHeader } from '../../../components';
+import { Card, CardLayout, DataValue, PageWrapper, SectionHeader, StyledDataValue } from '../../../components';
 import { CardWidth } from '../../../components/card/types/card.types';
 import { farmsService, seasonsService } from '../../../services'
 import { Farm as IFarm, Season, seasonStatus } from '../../../types'
@@ -57,19 +57,4 @@ const StyledBanner = styled.img`
 
 const HeaderWrapper = styled.div`
     padding: 20px 0;
-`
-
-const StyledLabel = styled.label`
-    font-weight:700;
-`
-const DataValue:React.FC<{label:string}> = (props) => {
-    return(
-        <StyledDataValue>
-            <StyledLabel>{props.label}: </StyledLabel><span>{props.children}</span>
-        </StyledDataValue>
-    )
-}
-
-const StyledDataValue = styled.div`
-    padding: 5px 0;
 `

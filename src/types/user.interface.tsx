@@ -9,4 +9,5 @@ export interface User {
     token: string
     last_access: Date
     last_page: string
+    organization_id:string
 }

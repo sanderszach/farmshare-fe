@@ -28,7 +28,13 @@ export const Login:React.FC<OwnProps> = ({setToken}) => {
           email:username,
           password:password
         });
+
         setToken(token);
+
+        // TODO: This is a temporary solution. It reloads the page after a login
+        if(token.data){
+            window.location.reload(); 
+        }
       }
 
     return(

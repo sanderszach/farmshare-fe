@@ -9,7 +9,7 @@ export const UserContextProvider: React.FC = ({ children }) => {
     useEffect(() => {
         userService.getCurrentUser(setUserData)
         console.log(userData)
-    },[''])
+    },[])
     return (
         <UserContext.Provider value={userData}>{children}</UserContext.Provider>
     )
