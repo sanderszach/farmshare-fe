@@ -4,6 +4,7 @@ import { Input } from '@progress/kendo-react-inputs';
 import { Error } from "@progress/kendo-react-labels";
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import styled from 'styled-components';
+import { theme } from '../../theme';
 
 interface OwnProps {
     setToken?: any
@@ -97,8 +98,8 @@ const LoginWrapper = styled.div`
 `
 const SignInFormWrapper = styled.div`
     flex: 2;
-    padding: 40px;
-    margin: 100px auto;
+    padding: 120px 40px;
+    box-shadow: -10px 1px 10px rgb(0 0 0 / 40%);
 `
 const ImageWrapper = styled.div`
     flex: 3;
