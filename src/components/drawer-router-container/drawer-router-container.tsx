@@ -11,11 +11,11 @@ export const DrawerRouterContainer:React.FC<OwnProps> = (props) => {
     const [expanded, setExpanded] = useState(true)
 
     const items = [
-        { text: 'Dashboard', icon: 'k-i-bell', route: '/dashboard' },
+        { text: 'Dashboard', icon: 'k-i-grid', route: '/dashboard' },
         { separator: true },
-        { text: 'Farms', icon: 'k-i-inbox', route: '/farms' },
-        { text: 'Crop Groups', icon: 'k-i-inbox', route: '/eatergroups' },
-        { text: 'Account', icon: 'k-i-inbox', route: '/account' },
+        { text: 'Crop Groups', icon: 'k-i-cart', route: '/eatergroups' },
+        { text: 'Farms', icon: 'k-i-search', route: '/farms' },
+        { text: 'Account', icon: 'k-i-cog', route: '/account' },
     ];
 
     const onSelect = (e) => {
@@ -52,4 +52,10 @@ const Toolbar = styled.div`
 
 const StyledDrawer = styled(Drawer)`
     height:calc(100vh - 36px);
+
+    li[route="/account"] {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
 `

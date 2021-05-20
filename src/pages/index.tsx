@@ -1,4 +1,5 @@
 export * from './dashboard/dashboard'
 export * from './eater-groups/eater-groups'
+export * from './eater-groups/eater-group/eater-group'
 export * from './farms/farms'
 export * from './farms/farm/farm'

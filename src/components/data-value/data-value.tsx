@@ -13,6 +13,6 @@ export const StyledDataValue = styled.div`
     padding: 5px 0;
 `
 
-const StyledLabel = styled.label`
+export const StyledLabel = styled.label`
     font-weight:700;
 `

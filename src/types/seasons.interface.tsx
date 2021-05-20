@@ -1,3 +1,4 @@
+import { Farm } from "."
 
 export const seasonStatus = {
     "in-progress": {type:"info", displayText:"In Progress"},
@@ -8,7 +9,7 @@ export type SeasonStatus = "in-progress" | "enrolling"
 
 export interface Season {
     id:number
-    farm_id:number
+    farm_id:Farm
     name?:string
     description?:string
     start_date: Date

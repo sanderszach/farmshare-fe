@@ -10,9 +10,11 @@ import { EaterGroup } from '../../types'
 interface OwnProps {
     eaterGroup:EaterGroup
 }
-const EaterGroupCard:React.FC<OwnProps> = ({eaterGroup}) => {
+export const EaterGroupCard:React.FC<OwnProps> = ({eaterGroup}) => {
+    const handleClick = (e:React.MouseEventHandler<HTMLButtonElement>,eaterGroupId) => window.location.href=`/eatergroups/${eaterGroupId}`
+
     return(
-        <Card title={eaterGroup.name} width={CardWidth.normal}>
+        <Card title={eaterGroup.name} width={CardWidth.normal} handleClick={(e) => handleClick(e,eaterGroup.id)}>
             {eaterGroup.organization_id?.name ?
                 <DataValue label="Organization">{eaterGroup.organization_id?.name}</DataValue> :
                 <StyledDataValue>
@@ -46,7 +48,6 @@ export const EaterGroups:React.FC = () => {
         console.log(AllEaterGroups)
     },[userData])
 
-
     return(
         
         <div>
@@ -60,7 +61,7 @@ export const EaterGroups:React.FC = () => {
                     </CardLayout>
                 </>
                 :
-                <p>You are not currently enrolled in a crop group. Search below to join a group.</p>
+                <Chip style={{marginTop:'20px'}}text="You are not currently enrolled in a crop group. Search below to join a group" type="warning" />
             }
             { AllEaterGroups && AllEaterGroups.length > 0 &&
                 <>

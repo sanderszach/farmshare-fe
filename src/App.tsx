@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, HashRouter, Route, Switch } from "react-router-dom";
 import './App.css';
-import { Dashboard, EaterGroups } from './pages';
+import { Dashboard, EaterGroup, EaterGroups } from './pages';
 import { Login, PageWrapper } from './components';
 import useToken from './useToken';
 import { Farms } from './pages/farms/farms';
@@ -25,6 +25,9 @@ function App() {
             <Router>
               <Switch>
                 <Route path="/farms/:farmId" component={Farm} />
+              </Switch>
+              <Switch>
+                <Route path="/eatergroups/:eaterGroupId" component={EaterGroup} />
               </Switch>
               <Switch>
                 <Route exact path="/eatergroups" component={EaterGroups} />
