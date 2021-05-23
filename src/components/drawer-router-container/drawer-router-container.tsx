@@ -11,7 +11,7 @@ export const DrawerRouterContainer:React.FC<OwnProps> = (props) => {
     const [expanded, setExpanded] = useState(true)
 
     const items = [
-        { text: 'Dashboard', icon: 'k-i-grid', route: '/dashboard' },
+        { text: 'Dashboard', icon: 'k-i-grid', route: '/' },
         { separator: true },
         { text: 'Crop Groups', icon: 'k-i-cart', route: '/eatergroups' },
         { text: 'Farms', icon: 'k-i-search', route: '/farms' },

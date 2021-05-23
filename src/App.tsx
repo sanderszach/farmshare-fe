@@ -34,10 +34,10 @@ function App() {
                 <Route exact path="/farms" component={Farms} />
               </Switch>
               <Switch>
-                <Route exact path="/dashboard" component={Dashboard} />        
+                <Route exact path="/account" component={Account} />        
               </Switch>
               <Switch>
-                <Route exact path="/account" component={Account} />        
+                <Route exact path="/" component={Dashboard} />        
               </Switch>
             </Router>
           </PageWrapper>
