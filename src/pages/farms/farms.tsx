@@ -27,22 +27,12 @@ export const Farms:React.FC = () => {
     const [farms, setFarms] = useState<Farm[]>([])
     useEffect(() => {
         farmsService.getFarms(setFarms)
-        console.log(farms)
     },[''])
 
-    const handleClick = (e:React.MouseEventHandler<HTMLButtonElement>,farmId) => window.location.href=`/farms/${farmId}`
-    
     return(
         <CardLayout>
             {farms && farms.map(farm => 
-                <FarmCard farm={farm}/>
-                // <Card 
-                //     key={farm.id} 
-                //     handleClick={(e) => handleClick(e,farm.id)}
-                //     title={farm.name}
-                //     subtitle={farm.city && farm.state ? `${farm.city}, ${farm.state}` : ' '}
-                //     imageSrc={farm.image && `${API_URL}/assets/${farm.image}`}
-                // />
+                <FarmCard key={farm.id} farm={farm}/>
             )}
         </CardLayout>
     )

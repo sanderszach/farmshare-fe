@@ -46,7 +46,7 @@ export const EaterGroup:React.FC = () => {
                     <SectionHeader>Seasons</SectionHeader>
                     <CardLayout>
                         {eaterGroup.seasons.map(season => 
-                            <SeasonCard season={season.seasons_id} showFarm discount={eaterGroup.discount_rate} />
+                            <SeasonCard key={season.seasons_id.id} season={season.seasons_id} showFarm discount={eaterGroup.discount_rate} />
                         )}
                     </CardLayout>
                 </>

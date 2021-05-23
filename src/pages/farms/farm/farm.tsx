@@ -62,7 +62,7 @@ export const Farm:React.FC = () =>{
             <SectionHeader>Seasons</SectionHeader>
             <CardLayout>
                 {seasons.map(season => 
-                    <SeasonCard season={season}/>
+                    <SeasonCard key={season.id} season={season}/>
                 )}
             </CardLayout>
         </div>

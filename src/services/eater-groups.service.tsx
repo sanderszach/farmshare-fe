@@ -11,9 +11,8 @@ async function getAllEaterGroups(setState, organizationId?:string) {
 
     const fields = `fields=*,eaters.id,organization_id.*,seasons.seasons_id.*`
 
-    return API.get(`/items/eater_groups?${fields}&filter=${filterParams(organizationId)}`)
+    return API.get(`/items/eater_groups?${fields}&filter[organization_id][_eq]=${organizationId}`) //=${filterParams(organizationId)}
     .then(res => {
-        console.log(res.data.data)
         setState(res.data.data)
     })
 }
@@ -23,7 +22,6 @@ async function getEaterGroup(setState, eaterGroupId?:string) {
 
     return API.get(`/items/eater_groups/${eaterGroupId}?${fields}`)
     .then(res => {
-        console.log(res.data.data)
         setState(res.data.data)
     })
 }
@@ -32,7 +30,6 @@ async function getCurrentEaterGroups(setState,idsOnly?:boolean) {
     const fields = (idsOnly?:boolean) => idsOnly ? `fields=*`: `fields=eater_groups_id.*,eater_groups_id.eaters.id,eater_groups_id.organization_id.*,eater_groups_id.seasons.seasons_id.*,eater_groups_id.seasons.seasons_id.farm_id.*`
     return API.get(`/items/eater_groups_directus_users?${fields(idsOnly)}&filter[directus_users_id][_eq]=$CURRENT_USER&filter[eater_groups_id][_nnull]=true`)
     .then(res => {
-        console.log(res.data.data.eater_groups_id)
         setState(res.data.data)
     })
 }

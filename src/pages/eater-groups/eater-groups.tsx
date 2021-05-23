@@ -43,9 +43,8 @@ export const EaterGroups:React.FC = () => {
     const [AllEaterGroups,setAllEaterGroups] = useState<EaterGroup[]>([])
     const [CurrentEaterGroups,setCurrentEaterGroups] = useState<{eater_groups_id:EaterGroup}[]>([])
     useEffect(() => {
-        eaterGroupsService.getAllEaterGroups(setAllEaterGroups,userData.organization_id)
+        userData.organization_id && eaterGroupsService.getAllEaterGroups(setAllEaterGroups,userData.organization_id)
         eaterGroupsService.getCurrentEaterGroups(setCurrentEaterGroups)
-        console.log(AllEaterGroups)
     },[userData])
 
     return(
@@ -56,7 +55,7 @@ export const EaterGroups:React.FC = () => {
                     <SectionHeader>My Crop Groups</SectionHeader>
                     <CardLayout>
                         {CurrentEaterGroups.map(eaterGroup => 
-                            <EaterGroupCard eaterGroup={eaterGroup.eater_groups_id} />
+                            <EaterGroupCard key={eaterGroup.eater_groups_id.id} eaterGroup={eaterGroup.eater_groups_id} />
                         )}
                     </CardLayout>
                 </>
@@ -67,16 +66,12 @@ export const EaterGroups:React.FC = () => {
                 <>
                     <SectionHeader>Search Crop Groups</SectionHeader>
                     <CardLayout>
-                        {AllEaterGroups.map(eaterGroup => 
-                            <EaterGroupCard eaterGroup={eaterGroup} />
+                        {AllEaterGroups.filter(x => !CurrentEaterGroups.map(y => y.eater_groups_id.id).includes(x.id) ).map(eaterGroup => 
+                            <EaterGroupCard key={eaterGroup.id} eaterGroup={eaterGroup} />
                         )}
                     </CardLayout>
                 </>
             }
-            {/* <h1>All Available Crop Groups</h1>
-            {JSON.stringify(AllEaterGroups)}
-            <h1>Current Crop Groups</h1>
-            {JSON.stringify(CurrentEaterGroups)} */}
         </div>
     )
 }

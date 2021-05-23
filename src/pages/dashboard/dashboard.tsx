@@ -58,7 +58,9 @@ export const Dashboard:React.FC = () => {
                     <h2>Messages</h2>
                     <List>
                         {messages.map(message => 
-                            <ListItem><MessageItem subject={message.subject} body={message.body || ''} date={message.date_created}/></ListItem>
+                            <ListItem key={message.id}>
+                                <MessageItem subject={message.subject} body={message.body || ''} date={message.date_created}/>
+                            </ListItem>
                         )}
                     </List>
                 </ContainerCard>
@@ -78,21 +80,7 @@ export const Dashboard:React.FC = () => {
                         {currentData.farm && <FarmCard farm={currentEaterGroups[0].eater_groups_id.seasons[0].seasons_id.farm_id}/> }
                     </ContainerCard>
                 }
-            </DashboardContent>
-
-            {/* Eater */}
-            {/* {currentEaterGroups.length == 0 ? 
-                <div>You have not yet joined a Crop Group. Click HERE to sign up</div> :
-                <div style={{width:'300px'}}>These are your groups{JSON.stringify(currentEaterGroups)}</div> 
-            } */}
-
-            {/* Current Season Group */}
-            {/* {JSON.stringify(currentEaterGroups.map(x => x.eater_groups_id.seasons.filter(y => y.seasons_id.start_date <= new Date() && y.seasons_id.end_date >= new Date()).length ))} */}
-
-
-            {/* <div style={{width:'100px'}}>{JSON.stringify(userData)}</div> */}
-            <br/><br/>
-            
+            </DashboardContent>            
         </div>
     )
 }

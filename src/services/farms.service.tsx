@@ -11,7 +11,6 @@ async function createFarm(body:Farm, setState) {
 async function getFarms(setState,id?:string) {
     return API.get(`/items/farms/${id ? id : ''}`)
     .then(res => {
-        console.log(res.data.data)
         setState(res.data.data)
     })
 }

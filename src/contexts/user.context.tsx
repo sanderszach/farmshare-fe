@@ -8,7 +8,6 @@ export const UserContextProvider: React.FC = ({ children }) => {
     const [userData, setUserData] = useState<User>({} as User) //set this to user interface
     useEffect(() => {
         userService.getCurrentUser(setUserData)
-        console.log(userData)
     },[])
     return (
         <UserContext.Provider value={userData}>{children}</UserContext.Provider>
