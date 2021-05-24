@@ -10,8 +10,10 @@ interface OwnProps {
     setToken?: any
 }
 
+const API_URL = process.env.REACT_APP_API_URL
+
 async function loginUser(credentials) {
-    return fetch('http://localhost:8055/auth/login', {
+    return fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
